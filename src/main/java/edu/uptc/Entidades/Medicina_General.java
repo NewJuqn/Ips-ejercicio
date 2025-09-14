@@ -1,0 +1,37 @@
+package edu.uptc.Entidades;
+
+import java.time.LocalDate;
+
+public class Medicina_General extends ServicioMedico {
+    private boolean solicitudExamenPromocion;
+    private boolean solicitudExamenPrevencion;
+
+    public Medicina_General(boolean solicitudExamenPrevencion, boolean solicitudExamenPromocion) {
+        this.solicitudExamenPrevencion = solicitudExamenPrevencion;
+        this.solicitudExamenPromocion = solicitudExamenPromocion;
+    }
+
+    public Medicina_General(boolean solicitudExamenPrevencion, boolean solicitudExamenPromocion, LocalDate fechaDeAtencion, Medico medicoResponsable) {
+        super(fechaDeAtencion, medicoResponsable);
+        this.solicitudExamenPrevencion = solicitudExamenPrevencion;
+        this.solicitudExamenPromocion = solicitudExamenPromocion;
+    }
+
+    public boolean isSolicitudExamenPromocion() {
+        return solicitudExamenPromocion;
+    }
+
+    public void setSolicitudExamenPromocion(boolean solicitudExamenPromocion) {
+        this.solicitudExamenPromocion = solicitudExamenPromocion;
+    }
+
+    public boolean isSolicitudExamenPrevencion() {
+        return solicitudExamenPrevencion;
+    }
+
+    public void setSolicitudExamenPrevencion(boolean solicitudExamenPrevencion) {
+        this.solicitudExamenPrevencion = solicitudExamenPrevencion;
+    }
+
+
+}
