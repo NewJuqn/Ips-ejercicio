@@ -49,8 +49,8 @@ public class Medico {
     }
     @Override
     public String toString() {
-        return "Medico [nombre=" + nombre + ", cedula=" + cedula + ", numeroRegistroMedico=" + numeroRegistroMedico
-                + ", especialidad=" + especialidad + "]";
+        return "Medico "+ nombre + " con cedula: " + cedula + "\nNumero de registro medico: " + numeroRegistroMedico
+                + "\nEspecialidad: " + especialidad+"\n";
     }
 
 }

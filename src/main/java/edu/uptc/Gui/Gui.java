@@ -67,7 +67,7 @@ public class Gui {
             LocalDate fechaNacimiento = LocalDate.of(ano, mes, dia);
             String genero = JOptionPane.showInputDialog("Ingrese el genero:");
             JOptionPane.showMessageDialog(null, controlador.registrarPaciente(nombre, cedula, fechaNacimiento, genero));
-            paciente = new Paciente(nombre, cedula, fechaNacimiento, genero);
+            paciente = controlador.buscarPaciente(cedula);
         } else {
             JOptionPane.showMessageDialog(null, "Usuario ya registrado...");
         }
@@ -164,7 +164,7 @@ public class Gui {
                             controlador.eliminarMedico(nombreMedicoEliminar, cedulaMedicoEliminar));
                     break;
                 case 3:
-                    controlador.mostrarTodosLosMedicos();
+                    JOptionPane.showMessageDialog(null, controlador.mostrarTodosLosMedicos());
                     String nombreActualizarMedico = JOptionPane
                             .showInputDialog("Ingrese el nombre del medico a modificar:");
                     String cedulaActualizarMedico = JOptionPane
@@ -200,7 +200,11 @@ public class Gui {
                     String nombreBuscarMedico = JOptionPane.showInputDialog("Ingrese el nombre del medico:");
                     String cedulaBuscarMedico = JOptionPane.showInputDialog("Ingrese la cedula del medico:");
                     Medico medicoBuscado = controlador.buscarMedico(nombreBuscarMedico, cedulaBuscarMedico);
-                    JOptionPane.showMessageDialog(null, medicoBuscado.toString());
+                    if (medicoBuscado!=null) {
+                        JOptionPane.showMessageDialog(null, medicoBuscado.toString());
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Medico no encontrado");
+                    }
                     break;
                 case 7:
                     JOptionPane.showMessageDialog(null, "Saliendo...");
@@ -225,12 +229,12 @@ public class Gui {
             switch (opcionMenuPacientes) {
                 case 1:
                     String cedulaPacienteEliminar = JOptionPane.showInputDialog(
-                            controlador.mostrarTodosLosPacientes() + "\n" + "Ingrese la cedula del paciente:");
+                            controlador.mostrarTodosLosPacientes() + "\n" + "Ingrese la cedula del paciente a eliminar:");
                     JOptionPane.showMessageDialog(null, controlador.eliminarPaciente(cedulaPacienteEliminar));
                     break;
                 case 2:
                     String cedulaPacienteActualizar = JOptionPane
-                            .showInputDialog("Ingrese la cedula del paciente a eliminar:");
+                            .showInputDialog(controlador.mostrarTodosLosPacientes()+"\n Ingrese la cedula del paciente a actualizar:");
                     Paciente pacienteActualizar = controlador.buscarPaciente(cedulaPacienteActualizar);
                     int opcionActualizarPaciente;
                     if (pacienteActualizar != null) {
@@ -243,8 +247,8 @@ public class Gui {
                                     """));
                             if (opcionActualizarPaciente < 4 && opcionActualizarPaciente > 0) {
                                 String actualizarDatosPaciente = JOptionPane.showInputDialog("Ingrese la modifcacion:");
-                                controlador.actualizarPaciente(pacienteActualizar, opcionMenuPacientes,
-                                        actualizarDatosPaciente);
+                                JOptionPane.showMessageDialog(null, controlador.actualizarPaciente(pacienteActualizar, opcionActualizarPaciente,
+                                        actualizarDatosPaciente));
                             }
                         } while (opcionActualizarPaciente != 4);
                     } else {
@@ -257,7 +261,12 @@ public class Gui {
                 case 4:
                     String cedulaBuscarPaciente = JOptionPane.showInputDialog("Ingrese la cedula del paciente:");
                     Paciente pacientebuscado = controlador.buscarPaciente(cedulaBuscarPaciente);
-                    JOptionPane.showMessageDialog(null, pacientebuscado.toString());
+                    if (pacientebuscado!=null) {
+                        JOptionPane.showMessageDialog(null, pacientebuscado.toString());
+                    }else{
+                        JOptionPane.showMessageDialog(null, "No se encontro el paciente");
+                    }
+                    
                     break;
                 case 5:
                     JOptionPane.showMessageDialog(null, "Saliendo...");
@@ -297,8 +306,9 @@ public class Gui {
                     }
                     break;
                 case 2:
+                    String cedulaActualizarServicio = JOptionPane.showInputDialog(controlador.mostrarTodosLosPacientes()+"Ingrese la cedula del paciente:");
                     int idServicioActualizar = Integer.parseInt(JOptionPane.showInputDialog(
-                            controlador.mostrarHistorialClinico() + "\n" + "Ingrese el id del servicio a actualizar:"));
+                            controlador.verHistorialClinicoPaciente(cedulaActualizarServicio) + "\n" + "Ingrese el id del servicio a actualizar:"));
                     ServicioMedico servicioActualizar = controlador.buscarServicioMedico(idServicioActualizar);
                     if (servicioActualizar != null) {
                         int opcionActualizarServicio = Integer.parseInt(JOptionPane.showInputDialog("""
@@ -346,8 +356,7 @@ public class Gui {
                 case 5:
                     int idServicioMedico = Integer
                             .parseInt(JOptionPane.showInputDialog("Ingresa el id del servicio Medico:"));
-                    ServicioMedico servicioBuscado = controlador.buscarServicioMedico(idServicioMedico);
-                    JOptionPane.showMessageDialog(null, servicioBuscado.toString());
+                    JOptionPane.showMessageDialog(null, controlador.buscarServicioMedicoConPaciente(idServicioMedico));
                     break;
                 case 6:
                     JOptionPane.showMessageDialog(null, "Saliendo..");

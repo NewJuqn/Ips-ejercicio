@@ -75,9 +75,8 @@ public class Paciente {
     }
     @Override
     public String toString() {
-        return "Paciente [nombre=" + nombre + ", cedula=" + cedula + ", fechaDeNacimiento=" + fechaDeNacimiento
-                + ", edad=" + edad + ", genero=" + genero + ", serviciosMedicosPaciente=" + serviciosMedicosPaciente
-                + "]";
+        return "Paciente "+nombre + " con cedula: " + cedula + " , Fecha de nacimiento: " + fechaDeNacimiento
+                + " , Edad: " + edad + " , Genero: " + genero +"\n";
     }
 
 }

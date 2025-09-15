@@ -69,7 +69,7 @@ public class ClinicaServicios {
     public String mostrarTodosLosMedicos() {
         String todosLosMedicos = "";
         for (Medico medicoAux3 : medicos) {
-            todosLosMedicos += medicoAux3.toString()+"\n";
+            todosLosMedicos += medicoAux3.toString() + "\n";
         }
         return todosLosMedicos;
     }
@@ -78,7 +78,7 @@ public class ClinicaServicios {
         String medicosConCoincidencia = "";
         for (Medico medicoAux2 : medicos) {
             if (medicoAux2.getEspecialidad().equalsIgnoreCase(especialidad)) {
-                medicosConCoincidencia += medicoAux2.getNombre() +" con cedula: "+medicoAux2.getCedula()+"\n";
+                medicosConCoincidencia += medicoAux2.getNombre() + " con cedula: " + medicoAux2.getCedula() + "\n";
             }
         }
         return medicosConCoincidencia;
@@ -136,8 +136,9 @@ public class ClinicaServicios {
 
     public String verHistorialClinicoPaciente(String cedula) {
         Paciente pacienteVer = buscarPaciente(cedula);
-        String historialClinicoPaciente = "";
         if (pacienteVer != null) {
+            String historialClinicoPaciente = pacienteVer.getNombre() + " con cedula: " + pacienteVer.getCedula()
+                    + "\n";
             for (ServicioMedico servicioMedicoAux : pacienteVer.getServiciosMedicosPaciente()) {
                 historialClinicoPaciente += servicioMedicoAux.toString() + "\n";
             }
@@ -155,7 +156,7 @@ public class ClinicaServicios {
                 medicoElegido);
         pacienteParaCita.agregarServicio(nuevoServicio);
         historialClinico.add(nuevoServicio);
-        return "Cita creada exitosamente";
+        return "Cita registrada exitosamente";
     }
 
     public String registrarCita(Paciente pacieneParaCita, Medico medicoElegido, LocalDate fecha,
@@ -163,7 +164,7 @@ public class ClinicaServicios {
         ServicioMedico nuevoServicio = new Odontologia(fecha, medicoElegido, implementosUsados);
         pacieneParaCita.agregarServicio(nuevoServicio);
         historialClinico.add(nuevoServicio);
-        return "Cita creada exitosamente";
+        return "Cita registrada exitosamente";
     }
 
     public String registrarCitaDermatologia(Paciente pacienteParaCita, Medico medicoElegido, LocalDate fecha,
@@ -171,20 +172,37 @@ public class ClinicaServicios {
         ServicioMedico nuevoServicio = new Dermatologia(fecha, medicoElegido, procedimientosEsteticos);
         pacienteParaCita.agregarServicio(nuevoServicio);
         historialClinico.add(nuevoServicio);
-        return "Cita creada exitosamente";
+        return "Cita registrada exitosamente";
     }
 
-    public ServicioMedico buscarServicioMedico(int idServicio){
+    public ServicioMedico buscarServicioMedico(int idServicio) {
         for (ServicioMedico servicioMedico : historialClinico) {
-            if (servicioMedico.getIdServicio()==idServicio) {
+            if (servicioMedico.getIdServicio() == idServicio) {
                 return servicioMedico;
             }
         }
         return null;
     }
-    public String eliminarCita(Paciente pacienteEliminarCita, int idServicioPaciente){
+
+    public String buscarServicioMedicoConPaciente(int idServicio) {
+        ServicioMedico servicio = buscarServicioMedico(idServicio);
+        if (servicio != null) {
+            for (Paciente paciente : pacientes) {
+                for (ServicioMedico servicioAux : paciente.getServiciosMedicosPaciente()) {
+                    if (servicioAux.getIdServicio() == idServicio) {
+                        return "Servicio encontrado:\n" + servicio.toString() +
+                                "\nPaciente: " + paciente.getNombre() + " (" + paciente.getCedula() + ")";
+                    }
+                }
+            }
+            return servicio.toString() + "\n(Paciente no encontrado)";
+        }
+        return "Servicio no encontrado";
+    }
+
+    public String eliminarCita(Paciente pacienteEliminarCita, int idServicioPaciente) {
         for (ServicioMedico servicioMedico : pacienteEliminarCita.getServiciosMedicosPaciente()) {
-            if (servicioMedico.getIdServicio()==idServicioPaciente) {
+            if (servicioMedico.getIdServicio() == idServicioPaciente) {
                 pacienteEliminarCita.getServiciosMedicosPaciente().remove(servicioMedico);
                 return "Eliminado exitosamente";
             }
@@ -192,20 +210,20 @@ public class ClinicaServicios {
         return "No se encontro el paciente o no existe ese id de servicio, revise nuevamente";
     }
 
-    public String mostrarHistorialClinico(){
+    public String mostrarHistorialClinico() {
         String todosLosServiciosMedicos = "";
         for (ServicioMedico servicioMedico : historialClinico) {
-            todosLosServiciosMedicos+= servicioMedico.toString()+"\n";
+            todosLosServiciosMedicos += servicioMedico.toString() + "\n";
         }
         return todosLosServiciosMedicos;
     }
 
-    public String actualizarServicioMedicoFecha(ServicioMedico servicio, LocalDate fechaCambio){
+    public String actualizarServicioMedicoFecha(ServicioMedico servicio, LocalDate fechaCambio) {
         servicio.setFechaDeAtencion(fechaCambio);
         return "Fecha cambiada exitosamente";
     }
 
-    public String actualizarMedicoDeServicioMedico(ServicioMedico servicio, Medico medicoCambio){
+    public String actualizarMedicoDeServicioMedico(ServicioMedico servicio, Medico medicoCambio) {
         servicio.setMedicoResponsable(medicoCambio);
         return "Medico cambiado exitosamente";
     }

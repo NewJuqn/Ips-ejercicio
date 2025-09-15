@@ -8,10 +8,6 @@ public class ServicioMedico {
     private LocalDate fechaDeAtencion;
     private Medico medicoResponsable;
 
-    public ServicioMedico(){
-
-    }
-
     public ServicioMedico(LocalDate fechaDeAtencion, Medico medicoResponsable) {
         this.fechaDeAtencion = fechaDeAtencion;
         this.idServicio = contador++;
@@ -44,8 +40,8 @@ public class ServicioMedico {
 
     @Override
     public String toString() {
-        return "ServicioMedico [idServicio=" + idServicio + ", fechaDeAtencion=" + fechaDeAtencion
-                + ", medicoResponsable=" + medicoResponsable + "]";
+        return "ServicioMedico con ID: " + idServicio + " , Fecha de atencion: " + fechaDeAtencion
+                + " y medico responsable: \n" + medicoResponsable;
     }
     
 }

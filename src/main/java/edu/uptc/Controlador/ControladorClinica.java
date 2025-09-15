@@ -64,6 +64,9 @@ public class ControladorClinica {
     public ServicioMedico buscarServicioMedico(int idServicio){
         return this.clinicaServicios.buscarServicioMedico(idServicio);
     }
+    public String buscarServicioMedicoConPaciente(int idServicio){
+        return this.clinicaServicios.buscarServicioMedicoConPaciente(idServicio);
+    }
     public String eliminarCita(Paciente pacienteEliminar, int idServicio){
         return this.clinicaServicios.eliminarCita(pacienteEliminar, idServicio);
     }
