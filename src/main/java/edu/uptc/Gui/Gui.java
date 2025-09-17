@@ -18,6 +18,7 @@ public class Gui {
 
     public void iniciar() {
         String menuPrincipal = """
+                ***IPS Salud Boyaca***
                 1. Registrar cita
                 2. Menu de medicos
                 3. Menu de pacientes
