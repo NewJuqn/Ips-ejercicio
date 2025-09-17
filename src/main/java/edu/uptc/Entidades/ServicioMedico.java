@@ -2,7 +2,7 @@ package edu.uptc.Entidades;
 
 import java.time.LocalDate;
 
-public class ServicioMedico {
+public abstract class ServicioMedico {
     private int idServicio;
     private static int contador = 100;
     private LocalDate fechaDeAtencion;
