@@ -16,37 +16,64 @@ public class Medico {
 
     }
 
+    /** 
+     * @return String
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /** 
+     * @param nombre
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    /** 
+     * @return String
+     */
     public String getCedula() {
         return cedula;
     }
 
+    /** 
+     * @param cedula
+     */
     public void setCedula(String cedula) {
         this.cedula = cedula;
     }
 
+    /** 
+     * @return String
+     */
     public String getNumeroRegistroMedico() {
         return numeroRegistroMedico;
     }
 
+    /** 
+     * @param numeroRegistroMedico
+     */
     public void setNumeroRegistroMedico(String numeroRegistroMedico) {
         this.numeroRegistroMedico = numeroRegistroMedico;
     }
 
+    /** 
+     * @return String
+     */
     public String getEspecialidad() {
         return especialidad;
     }
 
+    /** 
+     * @param especialidad
+     */
     public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
     }
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return "Medico "+ nombre + " con cedula: " + cedula + "\nNumero de registro medico: " + numeroRegistroMedico

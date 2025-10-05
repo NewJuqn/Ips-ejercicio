@@ -23,56 +23,98 @@ public class Paciente {
         this.serviciosMedicosPaciente = new ArrayList<>();
     }
 
+    /** 
+     * @return String
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /** 
+     * @param nombre
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    /** 
+     * @return String
+     */
     public String getCedula() {
         return cedula;
     }
 
+    /** 
+     * @param cedula
+     */
     public void setCedula(String cedula) {
         this.cedula = cedula;
     }
 
+    /** 
+     * @return LocalDate
+     */
     public LocalDate getFechaDeNacimiento() {
         return fechaDeNacimiento;
     }
 
+    /** 
+     * @param fechaDeNacimiento
+     */
     public void setFechaDeNacimiento(LocalDate fechaDeNacimiento) {
         this.fechaDeNacimiento = fechaDeNacimiento;
     }
 
+    /** 
+     * @return int
+     */
     public int getEdad() {
         return edad;
     }
 
+    /** 
+     * @param edad
+     */
     public void setEdad(int edad) {
         this.edad = edad;
     }
 
+    /** 
+     * @return String
+     */
     public String getGenero() {
         return genero;
     }
 
+    /** 
+     * @param genero
+     */
     public void setGenero(String genero) {
         this.genero = genero;
     }
 
+    /** 
+     * @return ArrayList<ServicioMedico>
+     */
     public ArrayList<ServicioMedico> getServiciosMedicosPaciente() {
         return serviciosMedicosPaciente;
     }
 
+    /** 
+     * @param serviciosMedicosPaciente
+     */
     public void setServiciosMedicosPaciente(ArrayList<ServicioMedico> serviciosMedicosPaciente) {
         this.serviciosMedicosPaciente = serviciosMedicosPaciente;
     }
+    /** 
+     * @param servicioAgregado
+     */
     public void agregarServicio(ServicioMedico servicioAgregado){
         serviciosMedicosPaciente.add(servicioAgregado);
     }
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return "Paciente "+nombre + " con cedula: " + cedula + " , Fecha de nacimiento: " + fechaDeNacimiento

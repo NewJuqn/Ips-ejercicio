@@ -22,6 +22,13 @@ public class ClinicaServicios {
     }
 
     // MEDICO
+    /** 
+     * @param nombre nombre de medico
+     * @param cedula cedula del medico
+     * @param especialidad especialidad del medico
+     * @param numeroRegistroMedico Registor medico del medico
+     * @return Registra un nuevo medico y lo añade a una arraylist
+    */
     public String registrarMedico(String nombre, String cedula, String especialidad, String numeroRegistroMedico) {
         if (buscarMedico(nombre, cedula) == null) {
             medicos.add(new Medico(cedula, especialidad, nombre, numeroRegistroMedico));
@@ -30,6 +37,11 @@ public class ClinicaServicios {
         return null;
     }
 
+    /** 
+     * @param nombre
+     * @param cedula
+     * @return String
+     */
     public String eliminarMedico(String nombre, String cedula) {
         Medico medicoEliminar = buscarMedico(nombre, cedula);
         if (medicoEliminar != null) {
@@ -39,6 +51,12 @@ public class ClinicaServicios {
         return "Medico no encontrado";
     }
 
+    /** 
+     * @param medicoActualizar
+     * @param opcion
+     * @param cambio
+     * @return String
+     */
     public String actualizarMedico(Medico medicoActualizar, int opcion, String cambio) {
         switch (opcion) {
             case 1:
@@ -56,6 +74,11 @@ public class ClinicaServicios {
         return "Cambio exitoso";
     }
 
+    /** 
+     * @param nombreMedico
+     * @param cedula
+     * @return Medico
+     */
     public Medico buscarMedico(String nombreMedico, String cedula) {
         for (Medico medicoAux : medicos) {
             if (medicoAux.getNombre().equalsIgnoreCase(nombreMedico)
@@ -66,6 +89,9 @@ public class ClinicaServicios {
         return null;
     }
 
+    /** 
+     * @return String
+     */
     public String mostrarTodosLosMedicos() {
         String todosLosMedicos = "";
         for (Medico medicoAux3 : medicos) {
@@ -74,6 +100,10 @@ public class ClinicaServicios {
         return todosLosMedicos;
     }
 
+    /** 
+     * @param especialidad
+     * @return String
+     */
     public String buscarMedicoEspecialidad(String especialidad) {
         String medicosConCoincidencia = "";
         for (Medico medicoAux2 : medicos) {
@@ -85,6 +115,13 @@ public class ClinicaServicios {
     }
 
     // PACIENTE
+    /** 
+     * @param nombre
+     * @param cedula
+     * @param fechaDeNacimiento
+     * @param genero
+     * @return String
+     */
     public String registrarPaciente(String nombre, String cedula, LocalDate fechaDeNacimiento, String genero) {
         if (buscarPaciente(cedula) == null) {
             pacientes.add(new Paciente(nombre, cedula, fechaDeNacimiento, genero));
@@ -94,6 +131,10 @@ public class ClinicaServicios {
         }
     }
 
+    /** 
+     * @param cedula
+     * @return Paciente
+     */
     public Paciente buscarPaciente(String cedula) {
         for (Paciente pacienteAux : pacientes) {
             if (pacienteAux.getCedula().equalsIgnoreCase(cedula)) {
@@ -103,6 +144,9 @@ public class ClinicaServicios {
         return null;
     }
 
+    /** 
+     * @return String
+     */
     public String mostrarTodosLosPacientes() {
         String todosLosPacientes = "";
         for (Paciente pacienteAux : pacientes) {
@@ -111,12 +155,22 @@ public class ClinicaServicios {
         return todosLosPacientes;
     }
 
+    /** 
+     * @param cedula
+     * @return String
+     */
     public String eliminarPaciente(String cedula) {
         Paciente pacienteEliminar = buscarPaciente(cedula);
         pacientes.remove(pacienteEliminar);
         return "Paciente eliminado exitosamente";
     }
 
+    /** 
+     * @param pacienteActualizar
+     * @param opcion
+     * @param cambio
+     * @return String
+     */
     public String actualizarPaciente(Paciente pacienteActualizar, int opcion, String cambio) {
         switch (opcion) {
             case 1:
@@ -134,6 +188,10 @@ public class ClinicaServicios {
         return "Cambio exitoso";
     }
 
+    /** 
+     * @param cedula
+     * @return String
+     */
     public String verHistorialClinicoPaciente(String cedula) {
         Paciente pacienteVer = buscarPaciente(cedula);
         if (pacienteVer != null) {
@@ -150,6 +208,14 @@ public class ClinicaServicios {
     }
 
     // SERVICIO MEDICO
+    /** 
+     * @param pacienteParaCita
+     * @param medicoElegido
+     * @param fecha
+     * @param solicitudExamenPrevencion
+     * @param solicitudExamenPromocion
+     * @return String
+     */
     public String registrarCita(Paciente pacienteParaCita, Medico medicoElegido, LocalDate fecha,
             boolean solicitudExamenPrevencion, boolean solicitudExamenPromocion) {
         ServicioMedico nuevoServicio = new Medicina_General(solicitudExamenPrevencion, solicitudExamenPromocion, fecha,
@@ -159,6 +225,13 @@ public class ClinicaServicios {
         return "Cita registrada exitosamente";
     }
 
+    /** 
+     * @param pacieneParaCita
+     * @param medicoElegido
+     * @param fecha
+     * @param implementosUsados
+     * @return String
+     */
     public String registrarCita(Paciente pacieneParaCita, Medico medicoElegido, LocalDate fecha,
             String implementosUsados) {
         ServicioMedico nuevoServicio = new Odontologia(fecha, medicoElegido, implementosUsados);
@@ -167,6 +240,13 @@ public class ClinicaServicios {
         return "Cita registrada exitosamente";
     }
 
+    /** 
+     * @param pacienteParaCita
+     * @param medicoElegido
+     * @param fecha
+     * @param procedimientosEsteticos
+     * @return String
+     */
     public String registrarCitaDermatologia(Paciente pacienteParaCita, Medico medicoElegido, LocalDate fecha,
             String procedimientosEsteticos) {
         ServicioMedico nuevoServicio = new Dermatologia(fecha, medicoElegido, procedimientosEsteticos);
@@ -175,6 +255,10 @@ public class ClinicaServicios {
         return "Cita registrada exitosamente";
     }
 
+    /** 
+     * @param idServicio
+     * @return ServicioMedico
+     */
     public ServicioMedico buscarServicioMedico(int idServicio) {
         for (ServicioMedico servicioMedico : historialClinico) {
             if (servicioMedico.getIdServicio() == idServicio) {
@@ -184,6 +268,10 @@ public class ClinicaServicios {
         return null;
     }
 
+    /** 
+     * @param idServicio
+     * @return String
+     */
     public String buscarServicioMedicoConPaciente(int idServicio) {
         ServicioMedico servicio = buscarServicioMedico(idServicio);
         if (servicio != null) {
@@ -200,6 +288,11 @@ public class ClinicaServicios {
         return "Servicio no encontrado";
     }
 
+    /** 
+     * @param pacienteEliminarCita
+     * @param idServicioPaciente
+     * @return String
+     */
     public String eliminarCita(Paciente pacienteEliminarCita, int idServicioPaciente) {
         for (ServicioMedico servicioMedico : pacienteEliminarCita.getServiciosMedicosPaciente()) {
             if (servicioMedico.getIdServicio() == idServicioPaciente) {
@@ -210,6 +303,9 @@ public class ClinicaServicios {
         return "No se encontro el paciente o no existe ese id de servicio, revise nuevamente";
     }
 
+    /** 
+     * @return String
+     */
     public String mostrarHistorialClinico() {
         String todosLosServiciosMedicos = "";
         for (ServicioMedico servicioMedico : historialClinico) {
@@ -218,11 +314,21 @@ public class ClinicaServicios {
         return todosLosServiciosMedicos;
     }
 
+    /** 
+     * @param servicio
+     * @param fechaCambio
+     * @return String
+     */
     public String actualizarServicioMedicoFecha(ServicioMedico servicio, LocalDate fechaCambio) {
         servicio.setFechaDeAtencion(fechaCambio);
         return "Fecha cambiada exitosamente";
     }
 
+    /** 
+     * @param servicio
+     * @param medicoCambio
+     * @return String
+     */
     public String actualizarMedicoDeServicioMedico(ServicioMedico servicio, Medico medicoCambio) {
         servicio.setMedicoResponsable(medicoCambio);
         return "Medico cambiado exitosamente";

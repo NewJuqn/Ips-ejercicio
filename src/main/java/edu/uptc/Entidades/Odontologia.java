@@ -10,14 +10,23 @@ public class Odontologia extends ServicioMedico {
         this.implementosUsados = implementosUsados;
     }
 
+    /** 
+     * @return String
+     */
     public String getImplementosUsados() {
         return implementosUsados;
     }
 
+    /** 
+     * @param implementosUsados
+     */
     public void setImplementosUsados(String implementosUsados) {
         this.implementosUsados = implementosUsados;
     }
 
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return "Odontologia con ID: " + getIdServicio() + " , Fecha de atencion: " + getFechaDeAtencion()

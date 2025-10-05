@@ -14,30 +14,51 @@ public abstract class ServicioMedico {
         this.medicoResponsable = medicoResponsable;
     }
 
+    /** 
+     * @return int
+     */
     public int getIdServicio() {
         return idServicio;
     }
 
+    /** 
+     * @param idServicio
+     */
     public void setIdServicio(int idServicio) {
         this.idServicio = idServicio;
     }
 
+    /** 
+     * @return LocalDate
+     */
     public LocalDate getFechaDeAtencion() {
         return fechaDeAtencion;
     }
 
+    /** 
+     * @param fechaDeAtencion
+     */
     public void setFechaDeAtencion(LocalDate fechaDeAtencion) {
         this.fechaDeAtencion = fechaDeAtencion;
     }
 
+    /** 
+     * @return Medico
+     */
     public Medico getMedicoResponsable() {
         return medicoResponsable;
     }
 
+    /** 
+     * @param medicoResponsable
+     */
     public void setMedicoResponsable(Medico medicoResponsable) {
         this.medicoResponsable = medicoResponsable;
     }
 
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return "ServicioMedico con ID: " + idServicio + " , Fecha de atencion: " + fechaDeAtencion

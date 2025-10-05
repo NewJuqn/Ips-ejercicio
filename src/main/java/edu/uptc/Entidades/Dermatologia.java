@@ -10,14 +10,23 @@ public class Dermatologia extends ServicioMedico {
         this.procedimientosEsteticos = procedimientosEsteticos;
     }
 
+    /** 
+     * @return String
+     */
     public String getProcedimientosEsteticos() {
         return procedimientosEsteticos;
     }
 
+    /** 
+     * @param procedimientosEsteticos
+     */
     public void setProcedimientosEsteticos(String procedimientosEsteticos) {
         this.procedimientosEsteticos = procedimientosEsteticos;
     }
 
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return "Dermatologia con ID: " + getIdServicio() + " , Fecha de atencion: " + getFechaDeAtencion()

@@ -13,6 +13,13 @@ public class ControladorClinica {
     public ControladorClinica() {
         this.clinicaServicios = new ClinicaServicios();
     }
+    /** 
+     * @param nombre
+     * @param cedula
+     * @param especialidad
+     * @param numeroRegistroMedico
+     * @return String
+     */
     //Medico
     public String registrarMedico(String nombre, String cedula, String especialidad, String numeroRegistroMedico){
         try {
@@ -29,6 +36,11 @@ public class ControladorClinica {
             return "Error al registrar médico";
         }
     }
+    /** 
+     * @param nombre
+     * @param cedula
+     * @return String
+     */
     public String eliminarMedico(String nombre, String cedula){
         try {
             if (nombre == null || nombre.trim().isEmpty() || cedula == null || cedula.trim().isEmpty()) {
@@ -39,6 +51,12 @@ public class ControladorClinica {
             return "Error al eliminar médico";
         }
     }
+    /** 
+     * @param medicoActualizar
+     * @param opcion
+     * @param cambio
+     * @return String
+     */
     public String actualizarMedico(Medico medicoActualizar, int opcion, String cambio){
         try {
             if (medicoActualizar == null) {
@@ -52,15 +70,34 @@ public class ControladorClinica {
             return "Error al actualizar médico";
         }
     }
+    /** 
+     * @param nombreMedico
+     * @param cedula
+     * @return Medico
+     */
     public Medico buscarMedico(String nombreMedico, String cedula){
         return this.clinicaServicios.buscarMedico(nombreMedico, cedula);
     }
+    /** 
+     * @return String
+     */
     public String mostrarTodosLosMedicos(){
         return this.clinicaServicios.mostrarTodosLosMedicos();
     }
+    /** 
+     * @param especialidad
+     * @return String
+     */
     public String buscarMedicoEspecialidad(String especialidad){
         return this.clinicaServicios.buscarMedicoEspecialidad(especialidad);
     }
+    /** 
+     * @param nombre
+     * @param cedula
+     * @param fechaDeNacimiento
+     * @param genero
+     * @return String
+     */
     //Paciente
     public String registrarPaciente(String nombre, String cedula, LocalDate fechaDeNacimiento, String genero){
         try {
@@ -76,12 +113,23 @@ public class ControladorClinica {
             return "Error al registrar paciente";
         }
     }
+    /** 
+     * @param cedula
+     * @return Paciente
+     */
     public Paciente buscarPaciente(String cedula){
         return this.clinicaServicios.buscarPaciente(cedula);
     }
+    /** 
+     * @return String
+     */
     public String mostrarTodosLosPacientes(){
         return this.clinicaServicios.mostrarTodosLosPacientes();
     }
+    /** 
+     * @param cedula
+     * @return String
+     */
     public String eliminarPaciente(String cedula){
         try {
             if (cedula == null || cedula.trim().isEmpty()) {
@@ -92,6 +140,12 @@ public class ControladorClinica {
             return "Error al eliminar paciente";
         }
     }
+    /** 
+     * @param pacienteActualizar
+     * @param opcion
+     * @param cambio
+     * @return String
+     */
     public String actualizarPaciente(Paciente pacienteActualizar, int opcion, String cambio){
         try {
             if (pacienteActualizar == null) {
@@ -105,9 +159,21 @@ public class ControladorClinica {
             return "Error al actualizar paciente";
         }
     }
+    /** 
+     * @param cedula
+     * @return String
+     */
     public String verHistorialClinicoPaciente(String cedula){
         return this.clinicaServicios.verHistorialClinicoPaciente(cedula);
     }
+    /** 
+     * @param pacienteParaCita
+     * @param medicoElegido
+     * @param fecha
+     * @param solicitudExamenPrevencion
+     * @param solicitudExamenPromocion
+     * @return String
+     */
     //Servicio medico
     public String registrarCita(Paciente pacienteParaCita, Medico medicoElegido, LocalDate fecha, boolean solicitudExamenPrevencion, boolean solicitudExamenPromocion){
         try {
@@ -119,6 +185,13 @@ public class ControladorClinica {
             return "Error al registrar cita";
         }
     }
+    /** 
+     * @param pacieneParaCita
+     * @param medicoElegido
+     * @param fecha
+     * @param implementosUsados
+     * @return String
+     */
     public String registrarCita(Paciente pacieneParaCita, Medico medicoElegido, LocalDate fecha, String implementosUsados){
         try {
             if (pacieneParaCita == null || medicoElegido == null || fecha == null || 
@@ -130,6 +203,13 @@ public class ControladorClinica {
             return "Error al registrar cita de odontología";
         }
     }
+    /** 
+     * @param pacienteParaCita
+     * @param medicoElegido
+     * @param fecha
+     * @param procedimientosEsteticos
+     * @return String
+     */
     public String registrarCitaDermatologia(Paciente pacienteParaCita, Medico medicoElegido, LocalDate fecha, String procedimientosEsteticos){
         try {
             if (pacienteParaCita == null || medicoElegido == null || fecha == null || 
@@ -141,12 +221,25 @@ public class ControladorClinica {
             return "Error al registrar cita de dermatología";
         }
     }
+    /** 
+     * @param idServicio
+     * @return ServicioMedico
+     */
     public ServicioMedico buscarServicioMedico(int idServicio){
         return this.clinicaServicios.buscarServicioMedico(idServicio);
     }
+    /** 
+     * @param idServicio
+     * @return String
+     */
     public String buscarServicioMedicoConPaciente(int idServicio){
         return this.clinicaServicios.buscarServicioMedicoConPaciente(idServicio);
     }
+    /** 
+     * @param pacienteEliminar
+     * @param idServicio
+     * @return String
+     */
     public String eliminarCita(Paciente pacienteEliminar, int idServicio){
         try {
             if (pacienteEliminar == null) {
@@ -157,12 +250,25 @@ public class ControladorClinica {
             return "Error al eliminar cita";
         }
     }
+    /** 
+     * @return String
+     */
     public String mostrarHistorialClinico(){
         return this.clinicaServicios.mostrarHistorialClinico();
     }
+    /** 
+     * @param servicio
+     * @param fechaCambiar
+     * @return String
+     */
     public String actualizarServicioMedicoFecha(ServicioMedico servicio, LocalDate fechaCambiar){
         return this.clinicaServicios.actualizarServicioMedicoFecha(servicio, fechaCambiar);
     }
+    /** 
+     * @param servicio
+     * @param medicoCambio
+     * @return String
+     */
     public String actualizarMedicoDeServicioMedico(ServicioMedico servicio, Medico medicoCambio){
         return this.clinicaServicios.actualizarMedicoDeServicioMedico(servicio, medicoCambio);
     }

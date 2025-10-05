@@ -13,22 +13,37 @@ public class Medicina_General extends ServicioMedico {
         this.solicitudExamenPromocion = solicitudExamenPromocion;
     }
 
+    /** 
+     * @return boolean
+     */
     public boolean isSolicitudExamenPromocion() {
         return solicitudExamenPromocion;
     }
 
+    /** 
+     * @param solicitudExamenPromocion
+     */
     public void setSolicitudExamenPromocion(boolean solicitudExamenPromocion) {
         this.solicitudExamenPromocion = solicitudExamenPromocion;
     }
 
+    /** 
+     * @return boolean
+     */
     public boolean isSolicitudExamenPrevencion() {
         return solicitudExamenPrevencion;
     }
 
+    /** 
+     * @param solicitudExamenPrevencion
+     */
     public void setSolicitudExamenPrevencion(boolean solicitudExamenPrevencion) {
         this.solicitudExamenPrevencion = solicitudExamenPrevencion;
     }
 
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         return "Medicina General con ID: " + getIdServicio() + " , Fecha de atencion: " + getFechaDeAtencion()
